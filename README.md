@@ -2,19 +2,9 @@
 # magento2-best-seller
 
 <h2>Composer Installation Instructions</h2>
-edit composer.json file of the Magento 2 project
-edit to the following in repositories section 
+Add GIT Repository to composer
 <pre>
-"repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.magento.com/"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/emizentech/magento2-best-seller/"
-        }
-    ],
+composer config repositories.emizentech-magento2-best-seller vcs https://github.com/emizentech/magento2-best-seller/
 </pre>
 
 Since this package is in a development stage, you will need to change the minimum-stability as well to the composer.json file: -
