@@ -1,5 +1,5 @@
 {
-    "name": “emizentech/bestsellerwidget",
+    "name": "emizentech/bestsellerwidget",
     "description": "Emizentech Bestseller product widget",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0"
