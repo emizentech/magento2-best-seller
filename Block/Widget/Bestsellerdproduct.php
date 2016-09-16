@@ -91,7 +91,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductLimit() {
 		if($this->getData('productcount')==''){
-			return DEFAULT_PRODUCTS_COUNT;
+			return self::DEFAULT_PRODUCTS_COUNT;
 		}
         return $this->getData('productcount');
     }
@@ -101,7 +101,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductimagewidth() {
 		if($this->getData('imagewidth')==''){
-			return DEFAULT_IMAGE_WIDTH;
+			return self::DEFAULT_IMAGE_WIDTH;
 		}
         return $this->getData('imagewidth');
     }
@@ -111,7 +111,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductimageheight() {
 		if($this->getData('imageheight')==''){
-			return DEFAULT_IMAGE_HEIGHT;
+			return self::DEFAULT_IMAGE_HEIGHT;
 		}
         return $this->getData('imageheight');
     }
