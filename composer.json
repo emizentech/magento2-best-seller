@@ -1,5 +1,5 @@
 {
-    "name": "marleenp1p5/bestsellerwidget",
+    "name": "emizentech/bestsellerwidget",
     "description": "Emizentech Bestseller product widget",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0"
@@ -12,7 +12,7 @@
     "autoload": {
         "files": [ "registration.php" ],
         "psr-4": {
-            "marleenp1p5\\Bestsellerwidget\\": ""
+            "Emizentech\\Bestsellerwidget\\": ""
         }
     }
 }
