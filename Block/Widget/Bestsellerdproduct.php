@@ -17,6 +17,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      * @var int
      */
     protected $_productsCount;
+    protected $_productloader;
     /**
      * @var \Magento\Framework\App\Http\Context
      */
@@ -54,17 +55,19 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      * @param array $data
      */
    public function __construct(
-    \Magento\Catalog\Block\Product\Context $context,
+        \Magento\Catalog\Block\Product\Context $context,
         \Magento\Reports\Model\ResourceModel\Report\Collection\Factory $resourceFactory,
         \Magento\Reports\Model\Grouped\CollectionFactory $collectionFactory,
         \Magento\Reports\Helper\Data $reportsData,
+        \Magento\Catalog\Model\ProductFactory $_productloader,
         array $data = []
     ) {
         $this->_resourceFactory = $resourceFactory;
         $this->_collectionFactory = $collectionFactory;
         $this->_reportsData = $reportsData;
-              $this->_imageHelper = $context->getImageHelper();
+        $this->_imageHelper = $context->getImageHelper();
         $this->_cartHelper = $context->getCartHelper();
+        $this->_productloader = $_productloader;
         parent::__construct($context, $data);
     }
  	/**
@@ -76,14 +79,20 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
     /**
      * get featured product collection
      */
-   public function getBestsellerProduct(){
-     $limit = $this->getProductLimit();
-       
+    public function getBestsellerProduct(){
+        $limit = $this->getProductLimit();
 
 		$resourceCollection = $this->_resourceFactory->create('Magento\Sales\Model\ResourceModel\Report\Bestsellers\Collection');
 		$resourceCollection->setPageSize($limit);
 		return $resourceCollection;
-   }
+    }
+
+    /**
+        *Get Prduct by id
+    */
+    public function getLoadProduct($id){
+        return $this->_productloader->create()->load($id);
+    }
    
     /**
      * Get the configured limit of products
@@ -91,7 +100,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductLimit() {
 		if($this->getData('productcount')==''){
-			return DEFAULT_PRODUCTS_COUNT;
+			return self::DEFAULT_PRODUCTS_COUNT;
 		}
         return $this->getData('productcount');
     }
@@ -101,7 +110,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductimagewidth() {
 		if($this->getData('imagewidth')==''){
-			return DEFAULT_IMAGE_WIDTH;
+			return self::DEFAULT_IMAGE_WIDTH;
 		}
         return $this->getData('imagewidth');
     }
@@ -111,7 +120,7 @@ class Bestsellerdproduct extends \Magento\Framework\View\Element\Template implem
      */
     public function getProductimageheight() {
 		if($this->getData('imageheight')==''){
-			return DEFAULT_IMAGE_HEIGHT;
+			return self::DEFAULT_IMAGE_HEIGHT;
 		}
         return $this->getData('imageheight');
     }
